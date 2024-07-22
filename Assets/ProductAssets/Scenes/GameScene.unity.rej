@@ -1,0 +1,22 @@
+diff a/Assets/ProductAssets/Scenes/GameScene.unity b/Assets/ProductAssets/Scenes/GameScene.unity	(rejected hunks)
+@@ -1558,8 +1558,18 @@
+   m_Script: {fileID: 11500000, guid: cbcc7f3dcfe925a4da0ab8fa48a7d894, type: 3}
+   m_Name: 
+   m_EditorClassIdentifier: 
+-  playerTransform: {fileID: 612760480}
+-  avoidEffectPrefab: {fileID: 4985225737763889994, guid: ae4597e62071e1a40bec927b8c778985, type: 3}
++  _playPos: {x: 99999, y: 99999, z: 99999}
++  effectData:
++  - first: 
++    second: {fileID: 0}
++  - first: 
++    second: {fileID: 0}
++  - first: 
++    second: {fileID: 0}
++  - first: 
++    second: {fileID: 0}
++  - first: 
++    second: {fileID: 0}
+ --- !u!1 &236896371
+ GameObject:
+   m_ObjectHideFlags: 0

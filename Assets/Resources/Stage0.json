@@ -1,0 +1,368 @@
+{
+  "Title": "Stage01_120BPM.wav",
+  "Bpm": 120.0,
+  "Start": 2.0,
+  "End": 90.0,
+  "Notes": [
+    {
+      "Kind": 0,
+      "Time": 5.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 0,
+      "Time": 6.0,
+      "IsEnableCamera": true,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 1,
+      "Time": 9.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 1,
+      "Time": 10.0,
+      "IsEnableCamera": true,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 2,
+      "Time": 13.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 2,
+      "Time": 14.0,
+      "IsEnableCamera": true,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 3,
+      "Time": 17.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 3,
+      "Time": 18.0,
+      "IsEnableCamera": true,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 4,
+      "Time": 20.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 4,
+      "Time": 21.0,
+      "IsEnableCamera": true,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 5,
+      "Time": 23.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 5,
+      "Time": 24.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 6,
+      "Time": 25.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 6,
+      "Time": 26.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 2,
+      "Time": 27.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 2,
+      "Time": 28.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 7,
+      "Time": 31.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 7,
+      "Time": 32.0,
+      "IsEnableCamera": true,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 0,
+      "Time": 35.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 0,
+      "Time": 36.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 3,
+      "Time": 37.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 3,
+      "Time": 38.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 0,
+      "Time": 39.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 0,
+      "Time": 40.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 3,
+      "Time": 41.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 3,
+      "Time": 42.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 0,
+      "Time": 43.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 0,
+      "Time": 44.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 0,
+      "Time": 45.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 0,
+      "Time": 46.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 3,
+      "Time": 47.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 3,
+      "Time": 48.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 6,
+      "Time": 49.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 6,
+      "Time": 50.0,
+      "IsEnableCamera": true,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 6,
+      "Time": 53.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 6,
+      "Time": 54.0,
+      "IsEnableCamera": true,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 0,
+      "Time": 56.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 0,
+      "Time": 57.0,
+      "IsEnableCamera": true,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 0,
+      "Time": 60.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 0,
+      "Time": 61.0,
+      "IsEnableCamera": true,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 3,
+      "Time": 63.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 3,
+      "Time": 64.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 0,
+      "Time": 65.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 0,
+      "Time": 66.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 0,
+      "Time": 67.5,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 0,
+      "Time": 68.5,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 0,
+      "Time": 70.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 0,
+      "Time": 71.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 0,
+      "Time": 72.5,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 0,
+      "Time": 73.5,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 2,
+      "Time": 75.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 2,
+      "Time": 76.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 3,
+      "Time": 77.5,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 3,
+      "Time": 78.5,
+      "IsEnableCamera": true,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 0,
+      "Time": 81.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 0,
+      "Time": 82.0,
+      "IsEnableCamera": true,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 0,
+      "Time": 85.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 0,
+      "Time": 86.0,
+      "IsEnableCamera": true,
+      "IsAtkPredict": false
+    },
+    {
+      "Kind": 0,
+      "Time": 89.0,
+      "IsEnableCamera": false,
+      "IsAtkPredict": true
+    },
+    {
+      "Kind": 0,
+      "Time": 90.0,
+      "IsEnableCamera": true,
+      "IsAtkPredict": false
+    }
+  ]
+}
