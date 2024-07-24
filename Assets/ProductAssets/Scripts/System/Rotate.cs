@@ -24,6 +24,8 @@ public class Rotate : MonoBehaviour
     [SerializeField] GameObject Enemy;
     private atkEnemy atkEnemy;
 
+    [SerializeField] Color textColor;
+
     private void Start()
     {
         atkEnemy = Enemy.GetComponent<atkEnemy>();
@@ -37,6 +39,13 @@ public class Rotate : MonoBehaviour
         // if (Input.GetKeyDown(KeyCode.Space))
         // {
         //     Play(100);  //敵の攻撃が来たときに呼び出す
+        // }
+        // if(AttackCount <= LoadChartData.Data.Notes.Count / 2)
+        // {
+        //     foreach (var attackCount in attackCounts)
+        //     {
+        //         attackCount.color = textColor;
+        //     }
         // }
     }
 
@@ -66,6 +75,7 @@ public class Rotate : MonoBehaviour
                     attackCount.text = AttackCount.ToString();
                 }
             }
+
 
             RotateGear();
             conditionMet = false;  // 一度だけ動くようにフラグをリセット

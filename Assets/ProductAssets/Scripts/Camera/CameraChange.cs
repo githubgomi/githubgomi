@@ -31,7 +31,7 @@ public class CameraChange : MonoBehaviour
 
     [SerializeField] private CinemachineVirtualCamera vDefaultCam;
 
-
+    [SerializeField] GameObject AtkCounterUI;
 
     [SerializeField] private float delayTime;
 
@@ -40,8 +40,6 @@ public class CameraChange : MonoBehaviour
     Vector3 pos;            // カメラの現在座標
     Vector3 old_pos;        //　カメラの過去座標
 
-    // スローの係数
-    [SerializeField] float slowScale = 0.75f;
 
 
 
@@ -53,6 +51,7 @@ public class CameraChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         // カメラの取得
         cam = Camera.main;
         pos = cam.transform.position;
@@ -78,23 +77,6 @@ public class CameraChange : MonoBehaviour
 
         // 現在座標の取得
         pos = cam.transform.position;
-
-        // 移動フラグ
-        if (old_pos != pos)
-            isMove = true;
-
-        {
-            // スローモーション処理
-            if (isMove && vCameras[0].Priority == NOT_PRIORITY)
-            {
-                Time.timeScale = slowScale;
-            }
-
-            // ポーズ画面エラーの原因
-            else
-                Time.timeScale = DEFAULT_TIMESCALE;
-        }
-
     }
 
     void ChangeMainCamera()
@@ -109,54 +91,51 @@ public class CameraChange : MonoBehaviour
         switch (kind)
         {
             case LoadChartData.NoteKind.E_UP_L:
-                vCameras[(int)E_CAMERA_KIND.TYPE_B_UP].Priority = PRIORITY_CAM;
-                vCameras[(int)E_CAMERA_KIND.TYPE_B_UP].gameObject.GetComponent<PlayableDirector>().Play();
-                NowCamera = E_CAMERA_KIND.TYPE_B_UP;
+                SetCamera(E_CAMERA_KIND.TYPE_B_UP);
                 break;
 
             case LoadChartData.NoteKind.E_UP_S:
-                vCameras[(int)E_CAMERA_KIND.TYPE_S_UP].Priority = PRIORITY_CAM;
-                vCameras[(int)E_CAMERA_KIND.TYPE_S_UP].gameObject.GetComponent<PlayableDirector>().Play();
-                NowCamera = E_CAMERA_KIND.TYPE_S_UP;
+                SetCamera(E_CAMERA_KIND.TYPE_S_UP);
                 break;
 
             case LoadChartData.NoteKind.E_DOWN_S:
-                vCameras[(int)E_CAMERA_KIND.TYPE_S_DOWN].Priority = PRIORITY_CAM;
-                vCameras[(int)E_CAMERA_KIND.TYPE_S_DOWN].gameObject.GetComponent<PlayableDirector>().Play();
-                NowCamera = E_CAMERA_KIND.TYPE_S_DOWN;
+                SetCamera(E_CAMERA_KIND.TYPE_S_DOWN);
                 break;
 
             case LoadChartData.NoteKind.E_DOWN_L:
-                vCameras[(int)E_CAMERA_KIND.TYPE_B_DOWN].Priority = PRIORITY_CAM;
-                vCameras[(int)E_CAMERA_KIND.TYPE_B_DOWN].gameObject.GetComponent<PlayableDirector>().Play();
-                NowCamera = E_CAMERA_KIND.TYPE_B_DOWN;
+                SetCamera(E_CAMERA_KIND.TYPE_B_DOWN);
                 break;
+
             case LoadChartData.NoteKind.E_LEFT_S:
-                vCameras[(int)E_CAMERA_KIND.TYPE_S_LEFT].Priority = PRIORITY_CAM;
-                vCameras[(int)E_CAMERA_KIND.TYPE_S_LEFT].gameObject.GetComponent<PlayableDirector>().Play();
-                NowCamera = E_CAMERA_KIND.TYPE_S_LEFT;
+                SetCamera(E_CAMERA_KIND.TYPE_S_LEFT);
                 break;
 
             case LoadChartData.NoteKind.E_LEFT_L:
-                vCameras[(int)E_CAMERA_KIND.TYPE_B_LEFT].Priority = PRIORITY_CAM;
-                vCameras[(int)E_CAMERA_KIND.TYPE_B_LEFT].gameObject.GetComponent<PlayableDirector>().Play();
-                NowCamera = E_CAMERA_KIND.TYPE_B_LEFT;
+                SetCamera(E_CAMERA_KIND.TYPE_B_LEFT);
                 break;
 
             case LoadChartData.NoteKind.E_RIGHT_S:
-                vCameras[(int)E_CAMERA_KIND.TYPE_S_RIGHT].Priority = PRIORITY_CAM;
-                vCameras[(int)E_CAMERA_KIND.TYPE_S_RIGHT].gameObject.GetComponent<PlayableDirector>().Play();
-                NowCamera = E_CAMERA_KIND.TYPE_S_RIGHT;
+                SetCamera(E_CAMERA_KIND.TYPE_S_RIGHT);
                 break;
 
             case LoadChartData.NoteKind.E_RIGHT_L:
-                vCameras[(int)E_CAMERA_KIND.TYPE_B_RIGHT].Priority = PRIORITY_CAM;
-                vCameras[(int)E_CAMERA_KIND.TYPE_B_RIGHT].gameObject.GetComponent<PlayableDirector>().Play();
-                NowCamera = E_CAMERA_KIND.TYPE_B_RIGHT;
+                SetCamera(E_CAMERA_KIND.TYPE_B_RIGHT);
                 break;
         }
 
         Invoke(nameof(ChangeMainCamera), delayTime);
 
     }
+
+    void SetCamera(E_CAMERA_KIND cameraKind)
+    {
+        AtkCounterUI.SetActive(false);
+
+        vCameras[(int)cameraKind].Priority = PRIORITY_CAM;
+        vCameras[(int)cameraKind].gameObject.GetComponent<PlayableDirector>().Play();
+
+        vCameras[(int)cameraKind].m_Lens.FieldOfView = 60.0f;
+        NowCamera = cameraKind;
+    }
+
 }

@@ -59,6 +59,8 @@ public class NoteManager : MonoBehaviour
 
         color1 = smallLineColor;
         color2 = bigLineColor;
+
+        //prefab[(int)NoteKind.Line].GetComponent<Renderer>().SetMaterials()
     }
 
     // Update is called once per frame
@@ -87,12 +89,12 @@ public class NoteManager : MonoBehaviour
         // TO_DO エネミー攻撃実装
 
         // エネミー攻撃ができるまでの仮置き
-        GameObject temp = Instantiate(prefab[(int)NoteKind.Line]);
+        GameObject temp = prefab[(int)NoteKind.Line];
 
         if ((int)LoadChartData.Data.Notes[idx].Kind <= 3)
         {
             Renderer renderer = temp.GetComponent<Renderer>();
-            Material material = new(renderer.sharedMaterials[0]);
+            Material material = renderer.sharedMaterials[0];
 
 
             material.SetColor("_Color",color1);
@@ -103,7 +105,7 @@ public class NoteManager : MonoBehaviour
         else
         {
                 Renderer renderer = temp.GetComponent<Renderer>();
-                Material material = new Material(renderer.sharedMaterials[0]);
+                Material material = renderer.sharedMaterials[0];
 
                 // 第二引数変えてね
                 material.SetColor("_Color", color2);

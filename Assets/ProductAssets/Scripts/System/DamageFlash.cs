@@ -18,10 +18,16 @@ public class DamageFlash : MonoBehaviour
     }
 
     [SerializeField]
+    [Tooltip("点滅間隔")]
     float flash = 0.1f;     // 点滅回数
 
     [SerializeField]
+    [Tooltip("点滅回数")]
     int flashNum = 5;       // 点滅回数
+
+    [SerializeField]
+    [Tooltip("元に戻るまでの時間")]
+    float flashDuration = -999; // 透明から元の色に戻るまでの時間
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +48,9 @@ public class DamageFlash : MonoBehaviour
             material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
 
         }
+
+        if(flashDuration <= 0)
+        flashDuration = flash;
     }
 
     // Update is called once per frame
@@ -58,15 +67,29 @@ public class DamageFlash : MonoBehaviour
 
     IEnumerator FlashCoroutine()
     {
-        for(int i = 0; i < flashNum; ++i)
+        float elapsedTime;
+        float flashDuration = flash; // 透明から元の色に戻るまでの時間
+        Color originalColor = material.color;
+        Color transparentColor = new Color(color.r, color.g, color.b, 0.2f);
+
+        for (int i = 0; i < flashNum; ++i)
         {
-            material.color = new Color(color.r, color.g, color.b,0.0f);
+            // 透明に変化する
+            material.color = transparentColor;
+            yield return new WaitForSeconds(flashDuration);
 
-            yield return new WaitForSeconds(flash);
+            // 元の色に戻る
+            elapsedTime = 0f;
+            while (elapsedTime < flashDuration)
+            {
+                material.color = Color.Lerp(transparentColor, originalColor, elapsedTime / flashDuration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            material.color = originalColor;
 
-            material.color = color;
-
-            yield return new WaitForSeconds(flash);
+            yield return new WaitForSeconds(flashDuration);
         }
     }
+
 }

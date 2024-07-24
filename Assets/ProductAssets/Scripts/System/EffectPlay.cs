@@ -22,24 +22,24 @@ public class EffectPlay : MonoBehaviour
 {
     const int EFFECT_DATA = 5;
 
-    // -----•Ï”éŒ¾
+    // -----ï¿½Ïï¿½ï¿½éŒ¾
     public Vector3 _playPos = new Vector3(99999, 99999, 99999);
 
-    // ƒGƒtƒFƒNƒgƒf[ƒ^‚ğƒCƒ“ƒXƒyƒNƒ^[‚Åİ’è
+    // ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½Åİ’ï¿½
     [SerializeField]
     pair<string, GameObject>[] effectData;
 
     Dictionary<string, GameObject> effect = new Dictionary<string, GameObject>(EFFECT_DATA);
 
-    float lifeTime = 1.0f;
+    float lifeTime = 1.3f;
 
-    private pair<string, GameObject> currentEffect = new pair<string, GameObject>("none",null); // Œ»İ¶¬‚³‚ê‚Ä‚¢‚éƒWƒƒƒXƒg‰ñ”ğƒGƒtƒFƒNƒg‚ÌQÆ‚ğ•Û‚·‚é•Ï”
+    private pair<string, GameObject> currentEffect = new pair<string, GameObject>("none",null); // ï¿½ï¿½ï¿½İï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½ÌQï¿½Æ‚ï¿½Ûï¿½ï¿½ï¿½ï¿½ï¿½Ïï¿½
 
 
     // Start is called before the first frame update
     void Start()
     {
-       // İ’è‚³‚ê‚½ƒf[ƒ^‚ğmap‚ÉˆÚ“®
+       // ï¿½İ’è‚³ï¿½ê‚½ï¿½fï¿½[ï¿½^ï¿½ï¿½mapï¿½ÉˆÚ“ï¿½
        for(int i = 0; i < effectData.Length; i++)
        {
             if (effectData[i].Value == null)
@@ -48,8 +48,8 @@ public class EffectPlay : MonoBehaviour
             effect.Add(effectData[i].Key, effectData[i].Value);
        }
 
-        // ƒGƒfƒBƒ^‚©‚çƒf[ƒ^‚ªİ’è‚³‚ê‚Ä‚¢‚È‚©‚Á‚½ê‡,
-        // ƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚Ìƒ|ƒWƒVƒ‡ƒ“‚ğæ“¾
+        // ï¿½Gï¿½fï¿½Bï¿½^ï¿½ï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½İ’è‚³ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡,
+        // ï¿½Aï¿½^ï¿½bï¿½`ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìƒ|ï¿½Wï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ“¾
         if (_playPos == new Vector3(99999, 99999, 99999))
         {
             _playPos = transform.position;
@@ -63,14 +63,14 @@ public class EffectPlay : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒGƒtƒFƒNƒg‚ğ¶¬
+    /// ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½ğ¶ï¿½
     /// </summary>
-    /// <param name="effectname">g—p‚µ‚½‚¢ƒGƒtƒFƒNƒg‚Ì–¼‘O</param>
-    /// <param name="addPos">‰ÁZ‚µ‚½‚¢’l default = 0,0,0</param>
+    /// <param name="effectname">ï¿½gï¿½pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½tï¿½Fï¿½Nï¿½gï¿½Ì–ï¿½ï¿½O</param>
+    /// <param name="addPos">ï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½l default = 0,0,0</param>
     public void InstantiateEffect(in string effectname, in Vector3? addPos = null)
     {
         _playPos = transform.position;
-        // À•W‚ÉƒGƒtƒFƒNƒg¶¬
+        // ï¿½ï¿½ï¿½Wï¿½ÉƒGï¿½tï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½
         _playPos += addPos ?? Vector3.zero;
 
         if (currentEffect.Key != effectname)
@@ -85,10 +85,10 @@ public class EffectPlay : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒIƒuƒWƒFƒNƒg‚ğw’è‚³‚ê‚½ŠÔ‚Åíœ
+    /// ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½wï¿½è‚³ï¿½ê‚½ï¿½ï¿½ï¿½Ô‚Åíœ
     /// </summary>
-    /// <param name="obj">íœ‚µ‚½‚¢ƒIƒuƒWƒFƒNƒg</param>
-    /// <param name="deley">¶‘¶ŠÔ</param>
+    /// <param name="obj">ï¿½íœï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½g</param>
+    /// <param name="deley">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</param>
     private IEnumerator DestroyObject(GameObject obj, float deley)
     {
         yield return new WaitForSeconds(deley);

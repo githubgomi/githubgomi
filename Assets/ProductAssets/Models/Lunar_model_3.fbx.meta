@@ -3,7 +3,12 @@ guid: c6552504d5f3fa54b878ea60d9b62c61
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lunar_t
+    second: {fileID: -1359147506713316163, guid: 2e5a46d91cc757a449c0b8c5eb3f2afc, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -71,7 +76,7 @@ ModelImporter:
     strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0

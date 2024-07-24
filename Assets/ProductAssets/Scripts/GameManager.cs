@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
+using EasyTransition;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
@@ -60,6 +60,14 @@ public class GameManager : MonoBehaviour
 
     scoreUI scoreUI;
 
+    public bool isGameStarted = false;
+
+    [SerializeField] TransitionSettings transition;
+    [SerializeField] float loaddelay;    
+
+    [SerializeField] GameObject AtkCounterUI;
+
+    [SerializeField] float FadeoutTime = 10.0f;
 
     /// <summary>
     /// ?????U???f?[?^?Q??p
@@ -78,18 +86,18 @@ public class GameManager : MonoBehaviour
 
     bool isFinish = false; // ?X?e?[?W?I???t???O
 
-    //2024/07/18金城琉希名
-    //スタートカメラが終了したら音楽を再生するためにスタートカメラのgameobjectを追加
+    //2024/07/18・ｽ・ｽ・ｽ髣ｮ・ｽ・ｽ
+    //・ｽX・ｽ^・ｽ[・ｽg・ｽJ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽI・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ迚ｹ・ｽy・ｽ・ｽ・ｽﾄ撰ｿｽ・ｽ・ｽ・ｽ驍ｽ・ｽﾟにス・ｽ^・ｽ[・ｽg・ｽJ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽgameobject・ｽ・ｽﾇ会ｿｽ
     [SerializeField] GameObject startCamera;
-    //2024/07/19金城琉希名
-    //ラストカメラの遷移が終了したらシーン切り替えをするためにラストカメラのgameobjectを追加
+    //2024/07/19・ｽ・ｽ・ｽ髣ｮ・ｽ・ｽ
+    //・ｽ・ｽ・ｽX・ｽg・ｽJ・ｽ・ｽ・ｽ・ｽ・ｽﾌ遷・ｽﾚゑｿｽ・ｽI・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽV・ｽ[・ｽ・ｽ・ｽﾘゑｿｽﾖゑｿｽ・ｽ・ｽ・ｽ・ｽ・ｽ驍ｽ・ｽﾟに・ｿｽ・ｽX・ｽg・ｽJ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽgameobject・ｽ・ｽﾇ会ｿｽ
     [SerializeField] GameObject lastCamera;
 
     DamageFlash dmgFlash;
-
-    AudioSource audio;
+    AudioSource BGM;
     void Start()
     {
+
         LoadChartData.Load(0/*?????V?[????????K?v?f?[?^?????[?h*/);
 
         cameraScript = GetComponent<CameraChange>();
@@ -97,8 +105,8 @@ public class GameManager : MonoBehaviour
 
         rotate.SetStartCount(LoadChartData.Data.Notes.Count / 2);
 
-        audio = GetComponent<AudioSource>();
-        audio.time = LoadChartData.Data.Start;
+        BGM = GetComponent<AudioSource>();
+        BGM.time = LoadChartData.Data.Start;
 
         attackIdx = dataIdx;
 
@@ -116,16 +124,20 @@ public class GameManager : MonoBehaviour
         //?Q?[?????I????????^?C????????
         if (isFinish) Destroy(debugText);
 
-        //終わる時間よりtimelineが再生されていた時実行
-        if (startCamera.GetComponent<PlayableDirector>().duration - 0.2f <= startCamera.GetComponent<PlayableDirector>().time)
+        //・ｽI・ｽ・ｽ骼橸ｿｽﾔゑｿｽ・ｽtimeline・ｽ・ｽ・ｽﾄ撰ｿｽ・ｽ・ｽ・ｽ・ｽﾄゑｿｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽs
+        if (!isGameStarted && startCamera.GetComponent<PlayableDirector>().duration - 0.2f <= startCamera.GetComponent<PlayableDirector>().time)
         {
-            audio.Play();
+            isGameStarted = true;
+
+            AtkCounterUI.SetActive(true);
+
+            BGM.Play();
         }
 
         // ?J?E???g
-        if (audio.isPlaying)
+        if (BGM.isPlaying)
         {
-            second = audio.time;
+            second = BGM.time;
 
             if (debugText) debugText.text = second.ToString();
 
@@ -135,7 +147,7 @@ public class GameManager : MonoBehaviour
         if (!isFinish)
         {
 
-            // ???莞??I??????????U??
+            // ???・ｽ・ｽ??I??????????U??
             if (second > LoadChartData.Data.Notes[dataIdx].Time + RhythmDetect.GOOD_RANGE + 0.2f)
             {
                 if (!LoadChartData.Data.Notes[dataIdx].IsAtkPredict)
@@ -151,19 +163,22 @@ public class GameManager : MonoBehaviour
                     dataIdx++;  // ????U????
 
             }
-
             if (!LoadChartData.Data.Notes[dataIdx].IsAtkPredict)
                 AttackDodge();
         }
         else
         {
-            //ラストアタック画面に遷移する前にスコアを送る
+            //・ｽ・ｽ・ｽX・ｽg・ｽA・ｽ^・ｽb・ｽN・ｽ・ｽﾊに遷・ｽﾚゑｿｽ・ｽ・ｽO・ｽﾉス・ｽR・ｽA・ｽ翌・ｽ
             S_Result.SetScore(stylishCnt, normalCnt, badCnt);
-            SceneManager.LoadScene("LastAttackScene");
-            ////終わる時間よりtimelineが再生されていた時実行
+
+            StartCoroutine(FadeOutBGM(BGM, FadeoutTime));
+
+            TransLoadScene("LastAttackScene");
+            
+            ////・ｽI・ｽ・ｽ骼橸ｿｽﾔゑｿｽ・ｽtimeline・ｽ・ｽ・ｽﾄ撰ｿｽ・ｽ・ｽ・ｽ・ｽﾄゑｿｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽs
             //if (lastCamera.GetComponent<PlayableDirector>().duration - 0.1f <= lastCamera.GetComponent<PlayableDirector>().time)
             //{
-            //    //リザルト画面に遷移する前にスコアを送る
+            //    //・ｽ・ｽ・ｽU・ｽ・ｽ・ｽg・ｽ・ｽﾊに遷・ｽﾚゑｿｽ・ｽ・ｽO・ｽﾉス・ｽR・ｽA・ｽ翌・ｽ
             //    S_Result.SetScore(stylishCnt, normalCnt, badCnt);
             //    S_Load.SetNextLoadScene("Result");
             //}
@@ -217,7 +232,7 @@ public class GameManager : MonoBehaviour
             case RhythmDetect.Dodge.stylish:
                 temp.Effect.InstantiateEffect("stylishUI");
 
-                // スタイリッシュカメラが有効なノーツなら切り替える
+                // ・ｽX・ｽ^・ｽC・ｽ・ｽ・ｽb・ｽV・ｽ・ｽ・ｽJ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽ・ｽL・ｽ・ｽ・ｽﾈノ・ｽ[・ｽc・ｽﾈゑｿｽﾘゑｿｽﾖゑｿｽ・ｽ・ｽ
                 if (LoadChartData.Data.Notes[DataIdx].IsEnableCamera) { 
                     cameraScript.ChangeCam(LoadChartData.Data.Notes[DataIdx].Kind);
                 }
@@ -232,5 +247,26 @@ public class GameManager : MonoBehaviour
         }
 
         scoreUI.AddScore(RhythmDetect.Result);
+    }
+
+    void TransLoadScene(string _scenename)
+    {
+        TransitionManager.Instance().Transition(_scenename,transition,loaddelay);
+    }    
+
+    IEnumerator FadeOutBGM(AudioSource audioSource, float fadeDuration)
+    {
+        float startVolume = audioSource.volume;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(startVolume, 0, elapsedTime / fadeDuration);
+            yield return null;
+        }
+
+        audioSource.Stop();
+        audioSource.volume = startVolume;
     }
 }

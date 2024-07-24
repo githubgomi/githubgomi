@@ -10,8 +10,8 @@ public class scoreUI : MonoBehaviour
     [SerializeField] private float[] Line = new float[6];
 
 
-    [Space(15),Tooltip("Good”»’è‚Ì•â³’l")][Range(-1.0f,1.0f)][SerializeField] private float Good_Correction_value;
-    [Space(15),Tooltip("Miss”»’è‚Ì•â³’l")][Range(-1.0f,1.0f)][SerializeField] private float Miss_Correction_value;
+    [Space(15),Tooltip("Goodï¿½ï¿½ï¿½ï¿½Ì•â³ï¿½l")][Range(-1.0f,1.0f)][SerializeField] private float Good_Correction_value;
+    [Space(15),Tooltip("Missï¿½ï¿½ï¿½ï¿½Ì•â³ï¿½l")][Range(-1.0f,1.0f)][SerializeField] private float Miss_Correction_value;
 
     private float MAX_Score = 1000000.0f;
     private static float score = 0.0f;
@@ -30,7 +30,7 @@ public class scoreUI : MonoBehaviour
         Good = Good_Correction_value;
         Miss = Miss_Correction_value;
 
-        Debug.Log($"ƒ‰ƒCƒ“0{Line[5]}");
+        Debug.Log($"ï¿½ï¿½ï¿½Cï¿½ï¿½0{Line[5]}");
         Debug.Log($"pos0{UI[5].rectTransform.position}");
     }
 
@@ -39,7 +39,7 @@ public class scoreUI : MonoBehaviour
     {
         if(!isOnce)
         {
-            addScore = MAX_Score / (LoadChartData.Data.Notes.Count / 2);    //ƒm[ƒc‚PŒÂ‚ÌÅ‚“_
+            addScore = MAX_Score / (LoadChartData.Data.Notes.Count / 2);    //ï¿½mï¿½[ï¿½cï¿½Pï¿½Â‚ÌÅï¿½ï¿½_
 
             isOnce = true;
         }
@@ -77,7 +77,5 @@ public class scoreUI : MonoBehaviour
             break;
       
         }
-        Debug.Log(score);
-
     }
 }

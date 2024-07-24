@@ -17,29 +17,23 @@ public class atkEnemy : MonoBehaviour
     // コンポーネント
     [SerializeField] Transform player;
     [SerializeField] GameObject[] bodyParts_Trail; //攻撃の軌跡を表示させるための変数
-    [SerializeField, NamedArray(typeof(SEKind))]
-    AudioClip[] atkSE = new AudioClip[(int)SEKind.SE_MAX];
-    AudioSource audioSource;
     Animator animator;
 
-    [SerializeField, NamedArray(typeof(SEKind)), Range(0.0f, 1.0f)]
-    float[] SEValue = new float[(int)SEKind.SE_MAX];  // SEの音量
     int oldAttack;
     bool isAttack;
 
     //攻撃の軌跡を表示する手足の名前
     private enum bodyPartsKind
     {
-        L_HAND  = 0,    //左手
-        R_HAND  = 1,    //右手
-        L_LEG  = 2,     //左足
-        R_LEG  = 3,     //右足
+        L_HAND = 0,    //左手
+        R_HAND,         //右手
+        L_LEG,          //左足
+        R_LEG,          //右足
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        //audioSource = GetComponent<AudioSource>();
         animator = transform.GetChild(0).GetComponent<Animator>();
         oldAttack = -1;
         transform.LookAt(player);
@@ -97,12 +91,6 @@ public class atkEnemy : MonoBehaviour
         }
     }
 
-    void PlaySE(AudioClip[] se, float[] volume, int index)
-    {
-        audioSource.PlayOneShot(se[index]);
-        audioSource.volume = volume[index];
-    }
-
     void PlayAnim()
     {
         switch (LoadChartData.Data.Notes[GameManager.DataIdx].Kind)
@@ -111,8 +99,6 @@ public class atkEnemy : MonoBehaviour
                 DeactivateAllPartsTrail(); //前回表示した軌跡を非表示に戻しとく
 
                 animator.SetTrigger("B_UP");
-                // SE再生
-                //PlaySE(atkSE, SEValue, (int)SEKind.SwingDown);
                 ActivePartsTrail(bodyPartsKind.L_HAND);
                 ActivePartsTrail(bodyPartsKind.R_HAND);
                 break;
@@ -121,8 +107,6 @@ public class atkEnemy : MonoBehaviour
                 DeactivateAllPartsTrail();
 
                 animator.SetTrigger("S_UP");
-                // SE再生
-                //PlaySE(atkSE, SEValue, (int)SEKind.SwingDown);
                 ActivePartsTrail(bodyPartsKind.R_HAND);
                 break;
 
@@ -130,8 +114,6 @@ public class atkEnemy : MonoBehaviour
                 DeactivateAllPartsTrail();
 
                 animator.SetTrigger("B_Down");
-                // SE再生
-                //PlaySE(atkSE, SEValue, (int)SEKind.SwingDown);
                 ActivePartsTrail(bodyPartsKind.L_HAND);
                 ActivePartsTrail(bodyPartsKind.R_HAND);
                 break;
@@ -140,8 +122,6 @@ public class atkEnemy : MonoBehaviour
                 DeactivateAllPartsTrail();
 
                 animator.SetTrigger("S_Down");
-                // SE再生
-                //PlaySE(atkSE, SEValue, (int)SEKind.SwingDown);
                 ActivePartsTrail(bodyPartsKind.L_HAND);
                 break;
 
@@ -149,8 +129,6 @@ public class atkEnemy : MonoBehaviour
                 DeactivateAllPartsTrail();
 
                 animator.SetTrigger("B_Right");
-                // SE再生
-                //PlaySE(atkSE, SEValue, (int)SEKind.Sweep);
                 ActivePartsTrail(bodyPartsKind.L_HAND);
                 ActivePartsTrail(bodyPartsKind.R_HAND);
                 break;
@@ -159,8 +137,6 @@ public class atkEnemy : MonoBehaviour
                 DeactivateAllPartsTrail();
 
                 animator.SetTrigger("S_Right");
-                // SE再生
-                //PlaySE(atkSE, SEValue, (int)SEKind.Sweep);
                 ActivePartsTrail(bodyPartsKind.L_HAND);
                 ActivePartsTrail(bodyPartsKind.L_LEG);
                 break;
@@ -169,8 +145,6 @@ public class atkEnemy : MonoBehaviour
                 DeactivateAllPartsTrail();
 
                 animator.SetTrigger("B_Left");
-                // SE再生
-                //PlaySE(atkSE, SEValue, (int)SEKind.Sweep);
                 ActivePartsTrail(bodyPartsKind.L_HAND);
                 ActivePartsTrail(bodyPartsKind.R_HAND);
                 break;
@@ -179,8 +153,6 @@ public class atkEnemy : MonoBehaviour
                 DeactivateAllPartsTrail();
 
                 animator.SetTrigger("S_Left");
-                // SE再生
-                //PlaySE(atkSE, SEValue, (int)SEKind.Sweep);
                 ActivePartsTrail(bodyPartsKind.L_HAND);
                 ActivePartsTrail(bodyPartsKind.L_LEG);
                 break;
